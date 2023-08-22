@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  padding: 6px 22px;
+}
+
+.wrapper fieldset {
+  margin: 20px 0;
+  padding: 10px;
+}
