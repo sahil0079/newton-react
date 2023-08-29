@@ -1,0 +1,25 @@
+{
+  "books": [
+    {
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "author": "J.K. Rowling",
+      "genre": "Fantasy",
+      "summary": "The beginning of Harry's journey into the wizarding world",
+      "id": 8
+    },
+    {
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "genre": "Science Fiction",
+      "summary": "Exploring a futuristic society driven by technology and consumerism",
+      "id": 9
+    },
+    {
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "summary": "A quest to destroy a powerful ring and save Middle-earth",
+      "id": 10
+    }
+  ]
+}
