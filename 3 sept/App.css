@@ -1,0 +1,13 @@
+.card {
+    border: 2px solid black;
+    padding: 40px;
+    margin: 20px;
+    color: black;
+}
+
+
+.normal {
+    padding: 40px;
+    margin: 20px;
+    background-color: antiquewhite;
+}
