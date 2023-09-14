@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+.app-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.button-container {
+    background-color: green;
+    width: 400px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bolder;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
