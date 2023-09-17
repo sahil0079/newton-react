@@ -1,0 +1,46 @@
+.header {
+    background-color: black;
+    height: 60px;
+    display: flex;
+    justify-content: space-evenly;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.header_image {
+    height: 40px;
+    margin: 0 20px;
+}
+
+.header_container {
+    display: flex;
+    align-items: center;
+    flex: 0.9;
+}
+
+.search_box {
+    display: flex;
+    align-items: center;
+    width: 90%;
+}
+
+.search_box>input {
+    flex: 1;
+    border: none;
+    outline: 0;
+    padding: 10px;
+
+}
+
+.header_right {
+    display: flex;
+    color: white;
+    align-items: center;
+}
+
+.headerOption_basket {
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}

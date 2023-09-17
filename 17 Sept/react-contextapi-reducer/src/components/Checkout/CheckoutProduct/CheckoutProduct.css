@@ -1,0 +1,15 @@
+.checkoutProduct {
+    margin-left: 10%;
+}
+
+.checkoutProduct_image {
+    height: 300px;
+    object-fit: contain;
+}
+
+.checkoutProduct_rating {
+    display: flex;
+    width: 100px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
