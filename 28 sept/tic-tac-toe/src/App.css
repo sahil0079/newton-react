@@ -9,6 +9,11 @@
     height: 100vh;
 }
 
+.game {
+    display: flex;
+    flex-direction: row;
+}
+
 .board-row ::after {
     clear: both;
     content: "";
@@ -27,4 +32,8 @@
     width: 34px;
     padding: 0;
     margin-right: -1px;
+}
+
+.game-info {
+    margin-left: 20px;
 }
