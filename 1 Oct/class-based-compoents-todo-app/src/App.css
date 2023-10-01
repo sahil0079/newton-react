@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+}
+
+.app {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding-top: 4rem;
+}
+
+.todo_wrapper {
+    margin-right: 7em;
+    font-size: 1rem;
+    list-style: none;
+}
+
+.todo_item {
+    margin: 0.5rem 0;
+}
+
+.todo_item>button {
+    margin: 0 10px;
+}
