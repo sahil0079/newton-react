@@ -10,10 +10,12 @@ import Settings from './pages/Settings';
 import Account from './pages/Account';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
+import GlobalStyles from './styles/GlobalStyles';
 
 function App() {
   return (
     <>
+      <GlobalStyles />
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>

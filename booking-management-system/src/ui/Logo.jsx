@@ -8,15 +8,15 @@ const StyledLogo = styled.div`
 `;
 
 const Img = styled.img`
-    height: 9.6rem;
-    width:auto;
+    height: 7.6rem;
+    width: auto;
 `;
 
 function Logo() {
     return (
-        <div>
+        <StyledLogo>
             <Img src='https://cdn.worldvectorlogo.com/logos/bookingcom-1.svg' alt='logo' />
-        </div>
+        </StyledLogo>
     )
 }
 
