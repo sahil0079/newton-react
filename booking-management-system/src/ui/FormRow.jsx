@@ -24,9 +24,9 @@ function FormRow({ label, children, error }) {
     return (
         <div>
             <StyledFormRow>
-                {label && <Label> {label} </Label>}
+                {label && <Label htmlFor={children.props.id} > {label} </Label>}
                 {children}
-                {error && <Error> error </Error>}
+                {error && <Error> {error} </Error>}
             </StyledFormRow>
         </div>
     )
