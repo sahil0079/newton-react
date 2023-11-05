@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 20px;
+    padding: 0;
+}
+
+.modal-container {
+    position: relative;
+    border: 1px solid black;
+    padding: 13px;
+    width: 300px;
+    height: 100px;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+}
+
+.modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    border: 2px solid whitesmoke;
+    background-color: aliceblue;
+    border-radius: 12px;
+
+    width: 300px;
+    top: 70px;
+    left: calc(50% - 125px);
+    bottom: 70px;
+    height: 500px;
+}
