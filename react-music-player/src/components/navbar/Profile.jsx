@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../Provider/UserProvider';
 
@@ -13,14 +13,21 @@ function Profile() {
     const [showModal, setShowModal] = useState(false);
 
 
-
+    console.log('isUserLoggedIn', isUserLoggedIn)
     let loginUsername = sessionStorage.getItem('userInfo');
 
 
     function handleSignOut() {
+        sessionStorage.removeItem('userInfo');
+
+        sessionStorage.removeItem('authToken');
         signOutContext();
         navigate('/signin')
     }
+
+    useEffect(() => {
+        signOutContext(loginUsername)
+    }, [])
 
     return (
         <section className='profile'

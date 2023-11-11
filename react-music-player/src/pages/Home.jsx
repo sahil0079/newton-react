@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import MusicCard from '../components/music/MusicCard';
+import MusicPlayer from '../components/music/MusicPlayer';
+import MusicProvider from '../Provider/MusicProvider';
 import { getHeaderWithProjectId } from '../utils/configs';
 
 function Home() {
@@ -33,7 +35,7 @@ function Home() {
     }, []);
 
     return (
-        <>
+        <MusicProvider>
             {isLoading ? (
                 <div>Loading...</div>
             ) : (
@@ -41,9 +43,10 @@ function Home() {
                     <section className='musicList-container' >
                         {musicList.map((music, i) => <MusicCard key={i} {...music} />)}
                     </section>
+                    <MusicPlayer />
                 </>
             )}
-        </>
+        </MusicProvider>
 
     )
 }
