@@ -1,25 +1,24 @@
 
 import { useForm } from 'react-hook-form';
-
-import { useCreateCabin } from './useCreateCabin';
-import { useEditCabin } from './useEditCabin';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { createEditCabin } from '../../services/apiCabins';
 
 import React from 'react'
 import Button from '../../ui/Button'
 import FormRow from '../../ui/FormRow'
 import Input from '../../ui/Input'
+import { toast } from 'react-hot-toast';
 import FileInput from '../../ui/FileInput';
-import Form from '../../ui/Form';
 
 
 
-
-function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
+function CreateCabinForm({ cabinToEdit = {} }) {
 
     const { id: editId, ...editValues } = cabinToEdit;
 
     const isEditSession = Boolean(editId);
 
+    const queryClient = useQueryClient();
 
     const { register, handleSubmit, reset, getValues, formState } = useForm({
         defaultValues: isEditSession ? editValues : {}
@@ -29,9 +28,30 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
 
     // console.log('errors', errors)
 
-    const { createCabin, isCreating } = useCreateCabin();
+    const { mutate: createCabin, isLoading: isCreating } = useMutation({
+        mutationFn: createEditCabin,
+        onSuccess: () => {
+            toast.success('New cabin created successfully');
+            queryClient.invalidateQueries({
+                queryKey: ['cabins']
+            });
+            reset();
+        },
+        onError: (err) => toast.error(err.message)
+    })
 
-    const { editCabin, isEditing } = useEditCabin();
+    const { mutate: editCabin, isLoading: isEditing } = useMutation({
+        mutationFn: ({ newCabinData, id }) => createEditCabin(newCabinData, id),
+        onSuccess: () => {
+            toast.success('Cabin successfully edited');
+            queryClient.invalidateQueries({
+                queryKey: ['cabins']
+            });
+            reset();
+        },
+        onError: (err) => toast.error(err.message)
+    })
+
 
 
     function onSubmit(data) {
@@ -39,24 +59,14 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
         // mutate(data);
         const image = typeof data.image === 'string' ? data.image : data.image[0];
 
-        if (isEditSession) editCabin({ newCabinData: { ...data, image }, id: editId }, {
-            onSuccess: (data) => {
-                // reset();
-                onCloseModal?.();
-            }
-        })
-        else createCabin({ ...data, image: image }, {
-            onSuccess: (data) => {
-                // reset();
-                onCloseModal?.();
-            }
-        })
+        if (isEditSession) editCabin({ newCabinData: { ...data, image }, id: editId })
+        else createCabin({ ...data, image: image })
 
     }
 
     const isWorking = isCreating || isEditing;
     return (
-        <Form onSubmit={handleSubmit(onSubmit)} type={onCloseModal ? 'modal' : 'regular'} >
+        <form onSubmit={handleSubmit(onSubmit)} >
             <FormRow label='Cabin name' error={errors?.name?.message} >
                 <Input type='text' id='name' disabled={isWorking} {...register('name', {
                     required: 'This field is required'
@@ -105,16 +115,15 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
             </FormRow>
 
             <FormRow>
-                <Button
-                    onClick={() => onCloseModal?.()}
-                    variation='secondary'
-                    type='reset'
-                >Cancel</Button>
+                <Button variation='secondary' type='reset' >Cancel</Button>
                 <Button disabled={isWorking} >{isEditSession ? 'Edit Cabin' : 'Create New Cabin'}</Button>
 
             </FormRow>
 
-        </Form >
+
+
+
+        </form >
     )
 }
 
